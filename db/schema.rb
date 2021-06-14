@@ -20,20 +20,20 @@ ActiveRecord::Schema.define(version: 2021_06_11_220559) do
   end
 
   create_table "genres", force: :cascade do |t|
-    t.string "type"
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "songs", force: :cascade do |t|
     t.string "title"
-    t.string "artist"
-    t.string "genre"
     t.integer "duration"
     t.integer "artist_id"
     t.integer "genre_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["artist_id"], name: "index_songs_on_artist_id"
+    t.index ["genre_id"], name: "index_songs_on_genre_id"
   end
 
 end
